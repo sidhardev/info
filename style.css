@@ -1,56 +1,172 @@
-/* Basic Reset & Defaults */
-body, h1, h2, h3, p, ul, li, a, header, nav, main, section, article, footer {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Animations */
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Custom Component Classes */
+@layer components {
+  .btn {
+    @apply px-8 py-3 rounded-full transition-all transform hover:scale-105;
+  }
+  
+  .btn-primary {
+    @apply btn bg-secondary hover:bg-secondary/90 text-white;
+  }
+  
+  .btn-outline {
+    @apply btn bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm;
+  }
+
+  .nav-link {
+    @apply text-gray-600 hover:text-secondary transition-colors;
+  }
+
+  .section-title {
+    @apply text-4xl font-bold text-primary mb-8 text-center;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-xl;
+  }
+}
 }
 
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
-    padding: 20px;
+    color: #333333;
+    background-color: #f9f9f9;
+    padding:     <main>
+            <div class="container">
+                <section id="hero">
+                    <h2>Welcome! I'm Dev Sidhar</h2>
+                    <p>A skilled developer proficient in HTML, CSS, JavaScript, PHP, SQL, and SQLite, building dynamic web solutions.</p>
+                </section>
+    
+                <section id="about">
+                    <h2>About Me</h2>
+                    <p>Tell your story here, Dev. What are you passionate about? What's your background, your journey, and your goals? Make it personal and engaging! This is where your personality can shine.</p>
+                </section>
+    
+                <!-- ... other sections ... -->
+    
+            </div>
+        </main>
+    0; /* Remove body padding, let sections handle it or use a container */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 0;
 }
 
 header {
-    background: #333;
+    background: #2c3e50; /* Dark blue-grey */
     color: #fff;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     text-align: center;
-    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2.5em;
 }
 
 header nav ul li {
     display: inline;
-    margin-right: 10px;
+    margin: 0 15px;
 }
 
 header nav ul li a {
     color: #fff;
     text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover,
+header nav ul li a:focus {
+    color: #1abc9c; /* Teal for hover */
+}
+
+main {
+    flex-grow: 1; /* Ensures footer stays at the bottom */
 }
 
 section {
     background: #fff;
+    margin-bottom: 30px;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+section h2 {
+    color: #2c3e50;
     margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 5px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1abc9c; /* Teal accent */
+    display: inline-block;
 }
 
 .project-item {
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 25px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background-color: #fdfdfd;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
 
 .project-item:last-child {
     border-bottom: none;
+    margin-bottom: 0; /* Adjust if it's the last item in the section */
+}
+
+.project-item h3 {
+    color: #3498db; /* Blue for project titles */
+    margin-bottom: 10px;
+}
+
+.project-item p {
+    margin-bottom: 10px;
+}
+
+.project-item a {
+    color: #1abc9c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.project-item a:hover {
+    text-decoration: underline;
 }
 
 footer {
     text-align: center;
-    margin-top: 20px;
-    padding: 10px;
+    padding: 20px;
     font-size: 0.9em;
+    background-color: #34495e; /* Slightly lighter dark blue-grey */
+    color: #ecf0f1; /* Light grey text */
+    margin-top: auto; /* Pushes footer to bottom if content is short */
 }
